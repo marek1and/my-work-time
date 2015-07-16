@@ -17,17 +17,19 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@id/tv_create_event"
+                android:id="@+id/tv_create_event"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/create_event_label"
                 android:textSize="20.0sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:gravity="center"/>
 
             <Spinner
                 android:id="@+id/spinner_create_event"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"/>
 
         </LinearLayout>
 
@@ -35,14 +37,14 @@
             android:id="@+id/create_panel_fragments"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginTop="20.0dip"
             android:orientation="vertical" />
 
         <LinearLayout
             android:id="@+id/create_panel_note_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10.0dip"
+            android:layout_marginTop="20.0dip"
             android:orientation="vertical">
 
             <EditText
@@ -50,16 +52,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/write_note"
-                android:lines="1" />
+                android:gravity="top"
+                android:lines="3" />
 
         </LinearLayout>
 
-        <LinearLayout
+        <org.apmem.tools.layouts.FlowLayout
             android:id="@+id/create_panel_transport_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20.0dip"
-            android:orientation="horizontal" />
+            android:gravity="center" />
+
     </LinearLayout>
 
 </ScrollView>

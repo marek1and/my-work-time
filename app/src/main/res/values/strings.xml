@@ -12,7 +12,7 @@
 
     <string name="start_time">Czas rozpoczęcia</string>
     <string name="end_time">Czas zakończenia</string>
-    <string name="write_note">Napisz notatkę</string>
+    <string name="write_note">Napisz notatkę...</string>
 
     <string name="choose_transport">Wybierz transport...</string>
 
