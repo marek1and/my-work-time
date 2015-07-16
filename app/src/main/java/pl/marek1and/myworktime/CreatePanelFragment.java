@@ -25,6 +25,7 @@ import android.widget.TextView;
 import org.apmem.tools.layouts.FlowLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -80,8 +81,8 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
 
     private void initializeSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
-                                                                             R.array.create_event_options,
-                                                                             R.layout.spinner_item);
+                R.array.create_event_options,
+                R.layout.spinner_item);
         createEventSpinner.setAdapter(adapter);
         createEventSpinner.setOnItemSelectedListener(this);
     }
@@ -188,6 +189,9 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
     }
 
     public Set<Transport> getTransports() {
+        if(selectedTransports == null) {
+            selectedTransports = Collections.emptySet();
+        }
         return selectedTransports;
     }
 
@@ -203,7 +207,10 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
             wt.setStartTime(acef.getStartDateTime());
             wt.setEndTime(acef.getEndDateTime());
 
-            wt.addNote(new Note(getNote()));
+            String note = getNote();
+            if(!note.isEmpty()) {
+                wt.addNote(new Note(getNote()));
+            }
             for(Transport t: getTransports()) {
                 wt.addTransport(t);
             }
