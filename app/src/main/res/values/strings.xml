@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Mój czas pracy</string>
+    <string name="settings">Ustawienia</string>
+
+    <string name="create_event_label">Dodaj wydarzenie...</string>
+    <string-array name="create_event_options">
+        <item>Rozpocznij pracę</item>
+        <item>Dodaj godziny pracy</item>
+        <item>Dodaj dzień wolny</item>
+        <item>Dodaj urlop</item>
+    </string-array>
+
+    <string name="start_time">Czas rozpoczęcia</string>
+    <string name="end_time">Czas zakończenia</string>
+    <string name="write_note">Napisz notatkę</string>
+
+    <string name="choose_transport">Wybierz transport...</string>
+
+    <string name="application_name">Mój czas pracy</string>
+    <string name="search">Szukaj</string>
+    <string name="preferences">Ustawienia</string>
+    <string name="cancel">Anuluj</string>
+    <string name="apply">Zatwierdź</string>
+
+    <string name="start_workday">Rozpocznij pracę</string>
+    <string name="finish_workday">Zakończ pracę</string>
+    <string name="add_vacation">Dodaj urlop</string>
+
+    <string name="working_time">Pracujesz:</string>
+    <string name="start_hour">Godzina rozpoczęcia:</string>
+    <string name="finish_hour">Godzina zakończenia:</string>
+
+    <string name="summarize">Podsumuj</string>
+    <string name="day">Dzień</string>
+    <string name="week">Tydzień</string>
+    <string name="month">Miesiąc</string>
+    <string name="year">Rok</string>
+    <string name="other">Inny okres</string>
+    <string name="period">Okres</string>
+
+    <string name="show">Pokaż</string>
+    <string name="num_of_work_hours">Praca:</string>
+    <string name="num_of_vacation_hours">Urlop:</string>
+    <string name="num_of_free_hours">Czas wolny:</string>
+
+    <!-- Transports -->
+    <string name="walk">Pieszo</string>
+    <string name="bike">Rower</string>
+    <string name="car">Samochód</string>
+    <string name="bus">Autobus</string>
+    <string name="city_bus">Autobus miejski</string>
+    <string name="tramway">Tramwaj</string>
+    <string name="train">Pociąg</string>
+
+
+</resources>

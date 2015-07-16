@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/createPanelBackgroundColor"
+    android:theme="@style/AppTheme.CreatePanel" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/tv_create_event"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/create_event_label"
+                android:textSize="20.0sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinner_create_event"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_panel_fragments"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:orientation="vertical" />
+
+        <LinearLayout
+            android:id="@+id/create_panel_note_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10.0dip"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_create_panel_note"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/write_note"
+                android:lines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/create_panel_transport_container"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20.0dip"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+</ScrollView>
