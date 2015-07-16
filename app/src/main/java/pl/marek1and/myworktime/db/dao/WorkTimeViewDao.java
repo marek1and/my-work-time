@@ -90,8 +90,8 @@ class WorkTimeViewDao {
     protected WorkTime buildObjectWithDependencies(Cursor c, List<WorkTime> objects) {
 
         WorkTime wt = WorkTimeDao.buildWorkTimeFromCursor(c, 0);
-        //Transport t = TransportDao.buildTransportFromCursor(c, 4);
-        Note n = NoteDao.buildNoteFromCursor(c, 7);
+        Note n = NoteDao.buildNoteFromCursor(c, 5);
+        int tId = c.getInt(4);
 
         boolean added = false;
         for(WorkTime w: objects) {
@@ -105,7 +105,9 @@ class WorkTimeViewDao {
             objects.add(wt);
         }
 
-        //wt.addTransport(t);
+        if(tId > -1) {
+            wt.addTransport(Transport.values()[tId]);
+        }
         wt.addNote(n);
         return wt;
     }

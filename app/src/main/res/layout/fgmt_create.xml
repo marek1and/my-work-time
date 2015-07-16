@@ -61,7 +61,7 @@
             android:id="@+id/create_panel_transport_container"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20.0dip"
+            android:layout_marginTop="10.0dip"
             android:gravity="center" />
 
     </LinearLayout>

@@ -140,8 +140,7 @@ public class WorkTimeDao extends AbstractDao<WorkTime> {
                         "W.TYPE " +
                 "FROM WORKTIME W " +
                 "JOIN TRANSPORT_MAPPING TM ON W._ID = TM.W_ID " +
-                "JOIN TRANSPORT T ON T._ID = TM.T_ID " +
-                "WHERE T._ID = ?";
+                "WHERE TM.T_ID = ?";
         return getByQuery(query, String.valueOf(transport.getId()));
     }
 

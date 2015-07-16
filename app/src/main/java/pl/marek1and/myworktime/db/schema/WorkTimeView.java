@@ -16,16 +16,13 @@ public class WorkTimeView extends View {
                     "W.STARTTIME, " +
                     "W.ENDTIME, " +
                     "W.TYPE, " +
-                    "T._ID AS T_ID, " +
-                    "T.NAME, " +
-                    "T.ICONPATH, " +
+                    "TM.T_ID AS T_ID, " +
                     "N._ID AS N_ID, " +
                     "N.TITLE, " +
                     "N.NOTE, " +
                     "N.MTIME " +
                 "FROM WORKTIME W " +
                 "LEFT OUTER JOIN TRANSPORT_MAPPING TM ON W._ID = TM.W_ID " +
-                "LEFT OUTER JOIN TRANSPORT T ON T._ID = TM.T_ID " +
                 "LEFT OUTER JOIN NOTES N ON W._ID = N.W_ID;";
         setCreateQuery(createQuery);
     }

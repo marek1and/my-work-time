@@ -29,8 +29,7 @@ public class TransportMappingDao extends AbstractDao<TransportMapping> {
 
     @Override
     public boolean delete(TransportMapping tm) {
-        int deletedRows = 0;
-            deletedRows = db.delete(TransportsMappingTable.TABLE_NAME,
+        int deletedRows = db.delete(TransportsMappingTable.TABLE_NAME,
                                     TransportsMappingTable.Columns.W_ID + " = ? AND " +
                                     TransportsMappingTable.Columns.T_ID + " = ?",
                                     new String[]{String.valueOf(tm.getWorkTimeId()),

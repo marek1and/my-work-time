@@ -10,10 +10,15 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import pl.marek1and.myworktime.R;
+import pl.marek1and.myworktime.db.beans.WorkTime;
 
 public class AddDayOffFragment extends AbstractCreateEventFragment implements View.OnClickListener {
 
     private TextView tvStartDate;
+
+    public AddDayOffFragment() {
+        super(WorkTime.Type.DAYOFF);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

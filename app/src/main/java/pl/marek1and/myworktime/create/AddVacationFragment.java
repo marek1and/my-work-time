@@ -10,11 +10,16 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import pl.marek1and.myworktime.R;
+import pl.marek1and.myworktime.db.beans.WorkTime;
 
 public class AddVacationFragment extends AbstractCreateEventFragment implements View.OnClickListener {
 
     private TextView tvStartDate;
     private TextView tvEndDate;
+
+    public AddVacationFragment() {
+        super(WorkTime.Type.VACATION);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

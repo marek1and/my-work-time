@@ -10,10 +10,15 @@ import android.widget.TextView;
 import java.util.Calendar;
 
 import pl.marek1and.myworktime.R;
+import pl.marek1and.myworktime.db.beans.WorkTime;
 
 public class StartWorkFragment extends AbstractCreateEventFragment implements View.OnClickListener{
 
     private TextView tvStartTime;
+
+    public StartWorkFragment() {
+        super(WorkTime.Type.NORMAL);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

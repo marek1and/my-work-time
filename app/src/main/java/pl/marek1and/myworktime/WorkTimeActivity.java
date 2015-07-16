@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,9 +16,13 @@ import android.widget.ImageButton;
 
 import java.util.List;
 
+import pl.marek1and.myworktime.db.DatabaseManager;
+import pl.marek1and.myworktime.db.beans.WorkTime;
+
 public class WorkTimeActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
+    private DatabaseManager db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +31,7 @@ public class WorkTimeActivity extends ActionBarActivity {
 
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
+        db = new DatabaseManager(this);
 
     }
 
@@ -71,11 +77,25 @@ public class WorkTimeActivity extends ActionBarActivity {
         FragmentTransaction ft = fm.beginTransaction();
 
         if (af != null) {
+
+            if(af instanceof CreatePanelFragment) {
+                CreatePanelFragment cpf = (CreatePanelFragment)af;
+                addWorkTimeData(cpf.getWorkTimeData());
+            }
+
             fm.popBackStack();
         } else {
             ft.add(R.id.fragment_container, new CreatePanelFragment(), CreatePanelFragment.FGMT_TAG)
               .addToBackStack(null)
               .commit();
+        }
+
+    }
+
+    private void addWorkTimeData(WorkTime wt) {
+
+        if(db != null) {
+            db.addWorkTime(wt);
         }
 
     }

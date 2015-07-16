@@ -35,7 +35,9 @@ import pl.marek1and.myworktime.create.AddVacationFragment;
 import pl.marek1and.myworktime.create.AddWorkTimeFragment;
 import pl.marek1and.myworktime.create.CreateEvent;
 import pl.marek1and.myworktime.create.StartWorkFragment;
+import pl.marek1and.myworktime.db.beans.Note;
 import pl.marek1and.myworktime.db.beans.Transport;
+import pl.marek1and.myworktime.db.beans.WorkTime;
 import pl.marek1and.myworktime.transport.TransportChooserDialog;
 import pl.marek1and.myworktime.transport.TransportListChangeListener;
 
@@ -179,6 +181,36 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
                 container.addView(plusView);
             }
         }
+    }
+
+    public String getNote() {
+        return etNote.getText().toString();
+    }
+
+    public Set<Transport> getTransports() {
+        return selectedTransports;
+    }
+
+    public WorkTime getWorkTimeData() {
+
+        FragmentManager fm = getFragmentManager();
+        Fragment af = fm.findFragmentByTag(AbstractCreateEventFragment.TAG);
+
+        if(af != null && af instanceof AbstractCreateEventFragment) {
+            AbstractCreateEventFragment acef = (AbstractCreateEventFragment) af;
+            WorkTime wt = new WorkTime();
+            wt.setType(acef.getType());
+            wt.setStartTime(acef.getStartDateTime());
+            wt.setEndTime(acef.getEndDateTime());
+
+            wt.addNote(new Note(getNote()));
+            for(Transport t: getTransports()) {
+                wt.addTransport(t);
+            }
+            return wt;
+        }
+
+        return null;
     }
 
 }

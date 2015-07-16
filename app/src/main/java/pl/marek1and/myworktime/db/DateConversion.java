@@ -27,6 +27,9 @@ public class DateConversion {
     }
 
     public static String formatDateTime(Date date) {
+        if(date == null) {
+            return null;
+        }
         SimpleDateFormat sdf = new SimpleDateFormat(DATETIME_FORMAT);
         String d = sdf.format(date);
         return d;

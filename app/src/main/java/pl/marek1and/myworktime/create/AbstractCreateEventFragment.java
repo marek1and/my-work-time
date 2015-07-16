@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import pl.marek1and.myworktime.db.beans.WorkTime;
+
 public abstract class AbstractCreateEventFragment extends Fragment implements TimePickerListener, DatePickerListener  {
 
     public static final String TAG = "create_event_fragment";
@@ -15,6 +17,11 @@ public abstract class AbstractCreateEventFragment extends Fragment implements Ti
 
     protected Calendar startDateTime;
     protected Calendar endDateTime;
+    protected WorkTime.Type type;
+
+    public AbstractCreateEventFragment(WorkTime.Type type) {
+        this.type = type;
+    }
 
     @Override
     public void onDateSet(TimeType type, int year, int month, int day) {
@@ -56,7 +63,14 @@ public abstract class AbstractCreateEventFragment extends Fragment implements Ti
     }
 
     public Date getEndDateTime() {
+        if(endDateTime == null) {
+            return null;
+        }
         return endDateTime.getTime();
+    }
+
+    public WorkTime.Type getType() {
+        return type;
     }
 
 }

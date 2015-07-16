@@ -6,7 +6,7 @@ import java.util.List;
 
 public class WorkTime {
 
-    public enum Type {NORMAL, DAYOFF}
+    public enum Type {NORMAL, DAYOFF, VACATION}
 
     private long id;
     private Date startTime;
@@ -66,6 +66,7 @@ public class WorkTime {
             }
         }
         if(!added && note != null) {
+            note.setWorkTime(this);
             notes.add(note);
         }
     }
