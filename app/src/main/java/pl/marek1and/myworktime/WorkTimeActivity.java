@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -110,10 +111,11 @@ public class WorkTimeActivity extends ActionBarActivity {
 
     }
 
-    private void addWorkTimeData(WorkTime wt) {
+    public void addWorkTimeData(WorkTime wt) {
         createBtn.setVisibility(View.VISIBLE);
         if(db != null) {
             db.addWorkTime(wt);
+            Toast.makeText(this, "Added", Toast.LENGTH_LONG);
         }
 
     }
