@@ -38,6 +38,14 @@ class WorkTimeViewDao {
         return String.format("SELECT * FROM %s WHERE STARTTIME >= ? AND STARTTIME < ?", table);
     }
 
+    public static String getCurrentWorkTimeQuery(String table) {
+        return String.format("SELECT * FROM %s WHERE ENDTIME IS NULL ORDER BY STARTTIME DESC LIMIT 1", table);
+    }
+
+    public static String getActualWorkTimesQuery(String table) {
+        return String.format("SELECT * from %s WHERE (CURRENT_TIMESTAMP BETWEEN STARTTIME AND ENDTIME) OR (STARTTIME <= CURRENT_TIMESTAMP AND ENDTIME IS NULL)", table);
+    }
+
     public WorkTime get(Object id) {
         String query = String.format("SELECT * FROM %S WHERE W_ID = ?;", VIEW_NAME);
         List<WorkTime> w = getByQuery(query, String.valueOf(id));
@@ -66,6 +74,21 @@ class WorkTimeViewDao {
         return getByQuery(getBetweenQuery(VIEW_NAME),
                           DateConversion.formatDateTime(starttime),
                           DateConversion.formatDateTime(endtime));
+    }
+
+    public WorkTime getCurrentWorkTime() {
+        List<WorkTime> w = getByQuery(getCurrentWorkTimeQuery(VIEW_NAME));
+
+        WorkTime workTime = null;
+        if(!w.isEmpty()) {
+            workTime = w.get(0);
+        }
+
+        return workTime;
+    }
+
+    public List<WorkTime> getActualWorkTimes() {
+        return getByQuery(getActualWorkTimesQuery(VIEW_NAME));
     }
 
     public List<WorkTime> getAll() {

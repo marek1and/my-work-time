@@ -22,7 +22,7 @@ public class DatabaseManager {
     private WorkTimeDao workTimeDao;
     private NoteDao noteDao;
 
-    public DatabaseManager(Context context){
+    public DatabaseManager(Context context) {
         this.context = context;
         open();
     }
@@ -68,6 +68,14 @@ public class DatabaseManager {
 
     public WorkTime getWorkTime(Object id) {
         return workTimeDao.get(id);
+    }
+
+    public WorkTime getCurrentWorkTime() {
+        return workTimeDao.getCurrentWorkTime();
+    }
+
+    public List<WorkTime> getActualWorkTimes() {
+        return workTimeDao.getActualWorkTimes();
     }
 
     public List<WorkTime> getWorkTimes() {

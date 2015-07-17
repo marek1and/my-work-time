@@ -17,6 +17,7 @@ import static pl.marek1and.myworktime.db.dao.FetchType.EAGER;
 import static pl.marek1and.myworktime.db.dao.FetchType.LAZY;
 import static pl.marek1and.myworktime.db.schema.WorkTimeTable.Columns._ID;
 import static pl.marek1and.myworktime.db.schema.WorkTimeTable.TABLE_NAME;
+import static pl.marek1and.myworktime.db.schema.WorkTimeView.VIEW_NAME;
 
 public class WorkTimeDao extends AbstractDao<WorkTime> {
 
@@ -194,6 +195,28 @@ public class WorkTimeDao extends AbstractDao<WorkTime> {
                     DateConversion.formatDateTime(endtime));
         } else {
             return workTimeViewDao.getBetween(starttime, endtime);
+        }
+    }
+
+    public WorkTime getCurrentWorkTime() {
+        if (LAZY.equals(fetchType)) {
+            List<WorkTime> w = getByQuery(WorkTimeViewDao.getCurrentWorkTimeQuery(TABLE_NAME));
+
+            WorkTime workTime = null;
+            if (!w.isEmpty()) {
+                workTime = w.get(0);
+            }
+            return workTime;
+        } else {
+            return workTimeViewDao.getCurrentWorkTime();
+        }
+    }
+
+    public List<WorkTime> getActualWorkTimes() {
+        if (LAZY.equals(fetchType)) {
+            return getByQuery(WorkTimeViewDao.getActualWorkTimesQuery(TABLE_NAME));
+        } else {
+            return workTimeViewDao.getActualWorkTimes();
         }
     }
 
