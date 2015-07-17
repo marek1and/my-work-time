@@ -85,6 +85,7 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
             @Override
             public void onClick(View v) {
                close();
+               wtActivity.cancelCreatingWorkTime();
             }
         });
 

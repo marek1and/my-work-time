@@ -71,37 +71,15 @@ public class WorkTimeActivity extends ActionBarActivity {
 
     public void addEventAction(View v) {
 
-        ImageButton b = (ImageButton)v;
-        Animation slide = AnimationUtils.loadAnimation(this, R.anim.btn_rotation);
-        b.startAnimation(slide);
-        slide.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                createBtn.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
+        final ImageButton b = (ImageButton)v;
+        //Animation slide = AnimationUtils.loadAnimation(this, R.anim.btn_rotation);
+        //b.startAnimation(slide);
 
         FragmentManager fm = getFragmentManager();
         Fragment af = fm.findFragmentByTag(CreatePanelFragment.FGMT_TAG);
         FragmentTransaction ft = fm.beginTransaction();
 
         if (af != null) {
-
-            if(af instanceof CreatePanelFragment) {
-                CreatePanelFragment cpf = (CreatePanelFragment)af;
-                addWorkTimeData(cpf.getWorkTimeData());
-            }
-
             fm.popBackStack();
         } else {
             ft.add(R.id.fragment_container, new CreatePanelFragment(), CreatePanelFragment.FGMT_TAG)
@@ -109,14 +87,22 @@ public class WorkTimeActivity extends ActionBarActivity {
               .commit();
         }
 
+        b.setVisibility(View.GONE);
+
     }
 
     public void addWorkTimeData(WorkTime wt) {
         createBtn.setVisibility(View.VISIBLE);
+        Log.i("", "addWorkTimeData");
         if(db != null) {
             db.addWorkTime(wt);
-            Toast.makeText(this, "Added", Toast.LENGTH_LONG);
+            Log.i("", "Added");
+            Toast.makeText(this, "Added", Toast.LENGTH_LONG).show();
         }
 
+    }
+
+    public void cancelCreatingWorkTime() {
+        createBtn.setVisibility(View.VISIBLE);
     }
 }
