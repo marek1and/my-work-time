@@ -21,6 +21,7 @@ import pl.marek1and.myworktime.db.beans.WorkTime;
 
 public class WorkTimeActivity extends ActionBarActivity {
 
+    private ImageButton createBtn;
     private Toolbar toolbar;
     private DatabaseManager db;
 
@@ -29,6 +30,7 @@ public class WorkTimeActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_worktime);
 
+        createBtn = (ImageButton)findViewById(R.id.act_worktime_create_btn);
         toolbar = (Toolbar)findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         db = new DatabaseManager(this);
@@ -71,6 +73,22 @@ public class WorkTimeActivity extends ActionBarActivity {
         ImageButton b = (ImageButton)v;
         Animation slide = AnimationUtils.loadAnimation(this, R.anim.btn_rotation);
         b.startAnimation(slide);
+        slide.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                createBtn.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
         FragmentManager fm = getFragmentManager();
         Fragment af = fm.findFragmentByTag(CreatePanelFragment.FGMT_TAG);
@@ -93,7 +111,7 @@ public class WorkTimeActivity extends ActionBarActivity {
     }
 
     private void addWorkTimeData(WorkTime wt) {
-
+        createBtn.setVisibility(View.VISIBLE);
         if(db != null) {
             db.addWorkTime(wt);
         }

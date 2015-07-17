@@ -29,7 +29,7 @@
     </LinearLayout>
 
     <ImageButton
-
+        android:id="@+id/act_worktime_create_btn"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginRight="@dimen/activity_horizontal_margin"

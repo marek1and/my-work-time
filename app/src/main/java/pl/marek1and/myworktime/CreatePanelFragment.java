@@ -2,6 +2,7 @@ package pl.marek1and.myworktime;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -46,16 +48,46 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
 
     public static final String FGMT_TAG = "fgmt_create_panel";
 
+    private WorkTimeActivity wtActivity;
     private Spinner createEventSpinner;
     private EditText etNote;
 
     private Set<Transport> selectedTransports;
 
     @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if(activity instanceof WorkTimeActivity) {
+            wtActivity = (WorkTimeActivity)activity;
+        }
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fgmt_create, container, false);
         createEventSpinner = (Spinner)v.findViewById(R.id.spinner_create_event);
         etNote = (EditText)v.findViewById(R.id.et_create_panel_note);
+
+        ImageButton saveBtn = (ImageButton)v.findViewById(R.id.fgmt_create_save_btn);
+        ImageButton cancelBtn = (ImageButton)v.findViewById(R.id.fgmt_create_cancel_btn);
+
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(wtActivity != null) {
+                    wtActivity.addWorkTimeData(getWorkTimeData());
+                    close();
+                }
+            }
+        });
+
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               close();
+            }
+        });
+
         initializeSpinner();
 
         FlowLayout transportLayout = (FlowLayout) v.findViewById(R.id.create_panel_transport_container);
@@ -76,8 +108,6 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
 
         return v;
     }
-
-
 
     private void initializeSpinner() {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),
@@ -218,6 +248,14 @@ public class CreatePanelFragment extends Fragment implements AdapterView.OnItemS
         }
 
         return null;
+    }
+
+    private void close() {
+        FragmentManager fm = getFragmentManager();
+        Fragment af = fm.findFragmentByTag(FGMT_TAG);
+        if (af != null) {
+            fm.popBackStack();
+        }
     }
 
 }
