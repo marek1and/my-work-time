@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="pl.marek1and.myworktime.WorkTimeActivity">
 
+
+    <item android:id="@+id/action_worktime_summary"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="@string/summary"
+        app:showAsAction="always" />
+
     <item android:id="@+id/action_settings"
           android:icon="@android:drawable/ic_menu_preferences"
-          android:title="Settings"
+          android:title="@string/settings"
           app:showAsAction="always" />
 </menu>

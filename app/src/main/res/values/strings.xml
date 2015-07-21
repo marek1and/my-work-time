@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Mój czas pracy</string>
     <string name="settings">Ustawienia</string>
+    <string name="summary">Podsumowanie</string>
+
 
     <string name="create_event_label">Dodaj wydarzenie...</string>
     <string-array name="create_event_options">

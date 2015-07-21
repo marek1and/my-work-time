@@ -3,6 +3,7 @@ package pl.marek1and.myworktime;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -49,6 +50,12 @@ public class WorkTimeActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            return true;
+        }else if (id == R.id.action_worktime_summary) {
+
+            Intent i = new Intent(this,WorkTimesSummaryActivity.class);
+            startActivity(i);
+
             return true;
         }
 
